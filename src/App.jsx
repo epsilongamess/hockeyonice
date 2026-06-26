@@ -388,43 +388,35 @@ function HeroSection({ onJoin, onGame }) {
 
       {/* Navbar */}
       <FadeIn delay={0} y={-20} className="w-full" style={{ position: "relative", zIndex: 10 }}>
-        <nav className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8">
-          {/* Left links */}
+        {/* Mobile nav — logo centred, no links */}
+        <div className="flex md:hidden justify-center pt-4 px-6">
+          <a href="#">
+            <img src="/logo-full.png" alt="Hockey On Ice Foundation" style={{ height: 38, width: "auto", objectFit: "contain" }}/>
+          </a>
+        </div>
+
+        {/* Desktop nav — notch logo centre + links each side */}
+        <nav className="hidden md:flex justify-between items-center px-10 pt-8">
           {["About", "Programmes"].map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              className="text-sm md:text-lg lg:text-[1.4rem] font-medium uppercase tracking-wider transition-opacity duration-200 hover:opacity-70"
-              style={{ color: "#D7E2EA" }}
-            >
+            <a key={link} href={`#${link.toLowerCase()}`}
+              className="text-lg lg:text-[1.4rem] font-medium uppercase tracking-wider transition-opacity duration-200 hover:opacity-70"
+              style={{ color: "#D7E2EA" }}>
               {link}
             </a>
           ))}
 
-          {/* Centre logo — notch tab joined to top edge */}
+          {/* Notch tab */}
           <a href="#" style={{ flexShrink: 0, position: "relative", top: "-24px", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
-            <div style={{
-              background: "#ffffff",
-              borderRadius: "0 0 20px 20px",
-              padding: "0 18px 10px",
-              boxShadow: "0 6px 32px rgba(0,0,0,0.28)",
-            }}>
-              <img
-                src="/logo-full.png"
-                alt="Hockey On Ice Foundation"
-                style={{ height: "clamp(36px, 4vw, 50px)", width: "auto", objectFit: "contain", display: "block" }}
-              />
+            <div style={{ background: "#ffffff", borderRadius: "0 0 20px 20px", padding: "0 18px 10px", boxShadow: "0 6px 32px rgba(0,0,0,0.28)" }}>
+              <img src="/logo-full.png" alt="Hockey On Ice Foundation"
+                style={{ height: "clamp(36px, 4vw, 50px)", width: "auto", objectFit: "contain", display: "block" }}/>
             </div>
           </a>
 
-          {/* Right links */}
           {["Impact", "Contact"].map((link) => (
-            <a
-              key={link}
-              href={`#${link.toLowerCase()}`}
-              className="text-sm md:text-lg lg:text-[1.4rem] font-medium uppercase tracking-wider transition-opacity duration-200 hover:opacity-70"
-              style={{ color: "#D7E2EA" }}
-            >
+            <a key={link} href={`#${link.toLowerCase()}`}
+              className="text-lg lg:text-[1.4rem] font-medium uppercase tracking-wider transition-opacity duration-200 hover:opacity-70"
+              style={{ color: "#D7E2EA" }}>
               {link}
             </a>
           ))}
@@ -494,17 +486,28 @@ function HeroSection({ onJoin, onGame }) {
         </motion.button>
       </div>
 
+      {/* Mobile-only: text floated above PLAY button */}
+      <FadeIn delay={0.35} y={20} className="md:hidden" style={{ position: "absolute", bottom: "38%", left: 0, right: 0, zIndex: 10, padding: "0 24px", pointerEvents: "none" }}>
+        <p
+          className="font-light uppercase tracking-wide leading-snug text-center"
+          style={{ color: "#D7E2EA", fontSize: "0.78rem" }}
+        >
+          Building India&apos;s largest grassroots ecosystem for ice hockey through youth development, coaching &amp; international collaboration.
+        </p>
+      </FadeIn>
+
       {/* Bottom Bar */}
-      <div className="flex justify-between items-end pb-7 sm:pb-8 md:pb-10 px-6 md:px-10 mt-auto" style={{ position: "relative", zIndex: 10 }}>
-        <FadeIn delay={0.35} y={20}>
+      <div className="flex justify-center md:justify-between items-end pb-8 md:pb-10 px-6 md:px-10 mt-auto" style={{ position: "relative", zIndex: 10 }}>
+        {/* Desktop only text */}
+        <FadeIn delay={0.35} y={20} className="hidden md:block">
           <p
-            className="font-light uppercase tracking-wide leading-snug max-w-[160px] sm:max-w-[220px] md:max-w-[260px]"
-            style={{ color: "#D7E2EA", fontSize: "clamp(0.75rem, 1.4vw, 1.5rem)" }}
+            className="font-light uppercase tracking-wide leading-snug max-w-[260px]"
+            style={{ color: "#D7E2EA", fontSize: "clamp(0.75rem, 1.4vw, 1rem)" }}
           >
             Building India&apos;s largest grassroots ecosystem for ice hockey through youth development, coaching &amp; international collaboration.
           </p>
         </FadeIn>
-        <FadeIn delay={0.5} y={20}>
+        <FadeIn delay={0.5} y={20} className="md:ml-auto">
           <ContactButton label="Join the Movement" onClick={onJoin} />
         </FadeIn>
       </div>
