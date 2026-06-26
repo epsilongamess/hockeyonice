@@ -1,6 +1,6 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
-import heroImage from "./assets/hoif-hero.png";
+import GameModal from "./GameModal";
 
 // ─── HOCKEY SVG DECORATIONS ──────────────────────────────────────────────────
 
@@ -336,7 +336,7 @@ function LiveProjectButton({ label = "Learn More" }) {
 
 // ─── HERO SECTION ────────────────────────────────────────────────────────────
 
-function HeroSection({ onJoin }) {
+function HeroSection({ onJoin, onGame }) {
   const videoRef = useRef(null);
 
   useEffect(() => {
@@ -435,6 +435,57 @@ function HeroSection({ onJoin }) {
             Hockey On Ice
           </h1>
         </FadeIn>
+      </div>
+
+      {/* Game trigger — compact glowing card */}
+      <div style={{ position: "absolute", bottom: "12%", left: "50%", transform: "translateX(-50%)", zIndex: 20 }}>
+        <motion.button
+          onClick={onGame}
+          animate={{
+            boxShadow: [
+              "0 0 18px rgba(0,163,255,0.3), 0 0 0px rgba(0,163,255,0) inset",
+              "0 0 36px rgba(0,163,255,0.7), 0 0 20px rgba(0,100,255,0.3) inset",
+              "0 0 18px rgba(0,163,255,0.3), 0 0 0px rgba(0,163,255,0) inset",
+            ],
+          }}
+          whileHover={{ scale: 1.08 }}
+          whileTap={{ scale: 0.94 }}
+          transition={{ duration: 2.2, repeat: Infinity, ease: "easeInOut" }}
+          style={{
+            background: "linear-gradient(145deg, rgba(0,6,28,0.88) 0%, rgba(0,30,80,0.75) 100%)",
+            backdropFilter: "blur(16px)",
+            border: "1.5px solid rgba(0,163,255,0.55)",
+            borderRadius: 20,
+            width: 130,
+            padding: "16px 10px 14px",
+            cursor: "pointer",
+            fontFamily: "Kanit, sans-serif",
+            display: "flex", flexDirection: "column",
+            alignItems: "center", gap: 6,
+            color: "#D7E2EA",
+          }}
+        >
+          {/* SVG puck + stick — small icon */}
+          <svg viewBox="0 0 60 48" width="28" height="22" xmlns="http://www.w3.org/2000/svg">
+            <rect x="10" y="4" width="6" height="32" rx="3" fill="rgba(180,220,255,0.9)"/>
+            <path d="M10,34 C6,38 4,42 8,44 L28,44 C32,44 34,40 30,36 C26,32 16,34 10,34 Z" fill="rgba(180,220,255,0.9)"/>
+            <ellipse cx="42" cy="40" rx="14" ry="6" fill="#0a0a20" stroke="rgba(0,163,255,0.8)" strokeWidth="1.5"/>
+            <ellipse cx="42" cy="38" rx="14" ry="5.5" fill="#111133"/>
+            <ellipse cx="42" cy="39" rx="9" ry="3" fill="none" stroke="rgba(0,163,255,0.35)" strokeWidth="1"/>
+            <ellipse cx="42" cy="45" rx="14" ry="3" fill="rgba(100,180,255,0.12)"/>
+          </svg>
+          <span style={{ fontSize: "1.7rem", fontWeight: 900, textTransform: "uppercase", letterSpacing: "0.15em", color: "#fff", lineHeight: 1 }}>
+            PLAY
+          </span>
+          <span style={{ fontSize: "0.88rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(100,190,255,0.9)", lineHeight: 1.45, textAlign: "center" }}>
+            First Time<br/>on Ice
+          </span>
+          <motion.div
+            animate={{ scale: [1, 1.4, 1], opacity: [0.6, 1, 0.6] }}
+            transition={{ duration: 1.4, repeat: Infinity }}
+            style={{ width: 6, height: 6, borderRadius: "50%", background: "#00A3FF", marginTop: 2 }}
+          />
+        </motion.button>
       </div>
 
       {/* Bottom Bar */}
@@ -1139,10 +1190,14 @@ function JoinModal({ open, onClose }) {
 
 export default function App() {
   const [modalOpen, setModalOpen] = useState(false);
+  const [gameOpen, setGameOpen] = useState(false);
 
   return (
     <div style={{ overflowX: "clip", background: "#0C0C0C" }}>
-      <HeroSection onJoin={() => setModalOpen(true)} />
+      <HeroSection
+        onJoin={() => setModalOpen(true)}
+        onGame={() => setGameOpen(true)}
+      />
       <MarqueeSection />
       <AboutSection onPartner={() => setModalOpen(true)} />
       <ServicesSection />
@@ -1152,6 +1207,11 @@ export default function App() {
       <CTASection onJoin={() => setModalOpen(true)} />
       <Footer />
       <JoinModal open={modalOpen} onClose={() => setModalOpen(false)} />
+      <GameModal
+        open={gameOpen}
+        onClose={() => setGameOpen(false)}
+        onJoin={() => { setGameOpen(false); setModalOpen(true); }}
+      />
     </div>
   );
 }
