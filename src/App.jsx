@@ -401,13 +401,21 @@ function HeroSection({ onJoin, onGame }) {
             </a>
           ))}
 
-          {/* Centre logo — full horizontal */}
-          <a href="#" className="flex items-center mx-4" style={{ flexShrink: 0 }}>
-            <img
-              src="/logo-full.png"
-              alt="Hockey On Ice Foundation"
-              style={{ height: "clamp(36px, 4.5vw, 52px)", width: "auto", objectFit: "contain" }}
-            />
+          {/* Centre logo — notch tab joined to top edge */}
+          <a href="#" style={{ flexShrink: 0, position: "relative", top: "-24px", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
+            <div style={{
+              background: "rgba(255,255,255,0.96)",
+              backdropFilter: "blur(12px)",
+              borderRadius: "0 0 20px 20px",
+              padding: "0 18px 10px",
+              boxShadow: "0 6px 32px rgba(0,0,0,0.28)",
+            }}>
+              <img
+                src="/logo-full.png"
+                alt="Hockey On Ice Foundation"
+                style={{ height: "clamp(36px, 4vw, 50px)", width: "auto", objectFit: "contain", display: "block" }}
+              />
+            </div>
           </a>
 
           {/* Right links */}
@@ -498,14 +506,7 @@ function HeroSection({ onJoin, onGame }) {
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
-          <div className="flex flex-col items-center gap-3">
-            <img
-              src="/logo-symbol.png"
-              alt="HOIF"
-              style={{ height: 52, width: "auto", objectFit: "contain" }}
-            />
-            <ContactButton label="Join the Movement" onClick={onJoin} />
-          </div>
+          <ContactButton label="Join the Movement" onClick={onJoin} />
         </FadeIn>
       </div>
 
