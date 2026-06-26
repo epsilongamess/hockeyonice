@@ -173,9 +173,9 @@ function SceneIntro({ onNext }) {
   const valid = name.trim().length > 0;
   return (
     <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:22, padding:"30px 24px", maxWidth:380, margin:"0 auto" }}>
-      <motion.div initial={{ scale:0, rotate:-15 }} animate={{ scale:1, rotate:0 }} transition={{ type:"spring", stiffness:200 }}
-        style={{ width:86, height:86, borderRadius:"50%", background:"linear-gradient(135deg,#000B2E,#0057FF)", border:"2.5px solid rgba(0,163,255,0.4)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:36 }}>
-        🏒
+      <motion.div initial={{ scale:0.85, opacity:0 }} animate={{ scale:1, opacity:1 }} transition={{ type:"spring", stiffness:200 }}
+        style={{ width:"100%", height:190, borderRadius:20, overflow:"hidden", border:"2px solid rgba(0,163,255,0.28)", boxShadow:"0 8px 32px rgba(0,87,255,0.22)" }}>
+        <img src="/game-intro.jpg" alt="Hockey" style={{ width:"100%", height:"100%", objectFit:"cover", objectPosition:"center 30%" }}/>
       </motion.div>
       <motion.div initial={{ y:18, opacity:0 }} animate={{ y:0, opacity:1 }} transition={{ delay:0.2 }} style={{ textAlign:"center" }}>
         <h2 style={{ color:"#fff", fontSize:"clamp(1.45rem,5vw,2rem)", fontWeight:900, textTransform:"uppercase", margin:0, letterSpacing:"-0.01em" }}>
@@ -273,11 +273,11 @@ function Level1({ playerName, onNext }) {
 
 // ─── LEVEL 2: SUIT UP ─────────────────────────────────────────────────────────
 const GEAR = [
-  { id:"helmet", label:"Helmet",        emoji:"⛑️"  },
-  { id:"pads",   label:"Shoulder Pads", emoji:"🛡️"  },
-  { id:"gloves", label:"Gloves",        emoji:"🧤"  },
-  { id:"skates", label:"Skates",        emoji:"⛸️"  },
-  { id:"stick",  label:"Stick",         emoji:"🏒"  },
+  { id:"helmet", label:"Helmet",        img:"/gear/helmet.png",  imgSize:40 },
+  { id:"pads",   label:"Shoulder Pads", img:"/gear/pads.png",    imgSize:58 },
+  { id:"gloves", label:"Gloves",        img:"/gear/gloves.png",  imgSize:40 },
+  { id:"skates", label:"Skates",        img:"/gear/skates.png",  imgSize:40 },
+  { id:"stick",  label:"Stick",         img:"/gear/stick.png",   imgSize:40 },
 ];
 const GPOS = [
   { x:5,  y:6  },
@@ -326,7 +326,7 @@ function Level2({ onNext }) {
               style={{ position:"absolute", left:`${pos.x}%`, top:`${pos.y}%`, cursor:isOn?"default":"grab", zIndex:isOn?0:10, opacity:isOn?0.38:1, touchAction:"none" }}
             >
               <div style={{ background:isOn?"rgba(0,255,136,0.07)":"rgba(0,18,65,0.88)", border:`1.5px solid ${isOn?"rgba(0,255,136,0.38)":"rgba(0,163,255,0.38)"}`, borderRadius:14, padding:"8px 10px", display:"flex", flexDirection:"column", alignItems:"center", gap:3, minWidth:60, userSelect:"none", backdropFilter:"blur(8px)" }}>
-                <span style={{ fontSize:22 }}>{item.emoji}</span>
+                <img src={item.img} alt={item.label} style={{ width:item.imgSize, height:item.imgSize, objectFit:"contain", pointerEvents:"none" }}/>
                 <span style={{ color:"rgba(215,226,234,0.65)", fontSize:"0.58rem", textTransform:"uppercase", letterSpacing:"0.06em", textAlign:"center" }}>{item.label}</span>
                 {isOn && <span style={{ color:"#00FF88", fontSize:"0.58rem", fontWeight:700 }}>✓</span>}
               </div>
@@ -508,8 +508,27 @@ function Level4({ onNext }) {
         <motion.div
           animate={{ left:pos[0]*CELL+4, top:pos[1]*CELL+4 }}
           transition={{ type:"spring", stiffness:320, damping:28 }}
-          style={{ position:"absolute", width:CELL-8, height:CELL-8, background:"linear-gradient(135deg,#0033AA,#0066FF)", borderRadius:10, border:"2px solid rgba(100,180,255,0.65)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:18, boxShadow:"0 0 16px rgba(0,100,255,0.5)" }}>
-          🏒
+          style={{ position:"absolute", width:CELL-8, height:CELL-8, background:"linear-gradient(135deg,#0033AA,#0066FF)", borderRadius:10, border:"2px solid rgba(100,180,255,0.65)", display:"flex", alignItems:"center", justifyContent:"center", boxShadow:"0 0 16px rgba(0,100,255,0.5)" }}>
+          <motion.svg
+            viewBox="0 0 32 32" width={CELL-16} height={CELL-16}
+            animate={{ rotate: [-12, 12, -12] }}
+            transition={{ duration: 0.9, repeat: Infinity, ease: "easeInOut" }}
+            style={{ transformOrigin: "50% 20%", overflow:"visible" }}
+          >
+            {/* Shaft */}
+            <rect x="14.5" y="2" width="3.5" height="20" rx="1.5" fill="#E8C97A"/>
+            <rect x="14.5" y="2" width="1.2" height="20" rx="1" fill="rgba(255,255,255,0.25)"/>
+            {/* Tape stripe on shaft */}
+            <rect x="14.5" y="16" width="3.5" height="2.5" rx="0.5" fill="rgba(255,255,255,0.45)"/>
+            {/* Blade */}
+            <path d="M14,22 Q8,23 6,26 Q5,28 8,28.5 L18,28 Q20,27.5 18,22 Z" fill="#C8A855"/>
+            <path d="M14,22 Q8,23 6,26" fill="none" stroke="rgba(255,255,255,0.3)" strokeWidth="0.8" strokeLinecap="round"/>
+            {/* Puck shadow under blade */}
+            <ellipse cx="11" cy="29.5" rx="5" ry="1.5" fill="rgba(0,0,0,0.28)"/>
+            {/* Puck */}
+            <ellipse cx="11" cy="29" rx="4.5" ry="1.8" fill="#1a1a2e"/>
+            <ellipse cx="11" cy="28.5" rx="4.5" ry="1.5" fill="#222244"/>
+          </motion.svg>
         </motion.div>
       </div>
       <div style={{ display:"grid", gridTemplateColumns:"repeat(3,50px)", gridTemplateRows:"repeat(3,50px)", gap:5 }}>
@@ -737,7 +756,9 @@ function Level7({ playerName, onJoin }) {
     <div style={{ display:"flex", flexDirection:"column", alignItems:"center", gap:18, padding:"22px 20px", maxWidth:400, margin:"0 auto", position:"relative" }}>
       <canvas ref={canvasRef} style={{ position:"fixed", inset:0, width:"100%", height:"100%", pointerEvents:"none", zIndex:1 }}/>
       <motion.div initial={{ scale:0, rotate:-20 }} animate={{ scale:1, rotate:0 }} transition={{ type:"spring", stiffness:180, delay:0.1 }}
-        style={{ fontSize:"5rem", position:"relative", zIndex:2 }}>🏆</motion.div>
+        style={{ position:"relative", zIndex:2 }}>
+        <img src="/gear/trophy.jpg" alt="Trophy" style={{ width:110, height:110, objectFit:"contain" }}/>
+      </motion.div>
       <motion.div initial={{ y:22, opacity:0 }} animate={{ y:0, opacity:1 }} transition={{ delay:0.32 }}
         style={{ textAlign:"center", position:"relative", zIndex:2 }}>
         <h2 style={{ color:"#FFD700", fontSize:"clamp(1.55rem,5vw,2.1rem)", fontWeight:900, textTransform:"uppercase", margin:0 }}>You Did It!</h2>
@@ -754,12 +775,6 @@ function Level7({ playerName, onJoin }) {
         <div style={{ color:"rgba(215,226,234,0.42)", fontSize:"0.76rem", lineHeight:1.6 }}>
           has successfully completed<br/>
           <strong style={{ color:"#00A3FF" }}>First Time on Ice — HOIF Experience</strong>
-        </div>
-        <div style={{ marginTop:13, display:"flex", gap:6, justifyContent:"center" }}>
-          {["⛸️","🏒","🥅","🏆","⭐"].map((e,i) => (
-            <motion.span key={i} initial={{ scale:0 }} animate={{ scale:1 }} transition={{ delay:0.72+i*0.08, type:"spring" }}
-              style={{ fontSize:"1.15rem" }}>{e}</motion.span>
-          ))}
         </div>
       </motion.div>
       <motion.div initial={{ y:18, opacity:0 }} animate={{ y:0, opacity:1 }} transition={{ delay:0.82 }}

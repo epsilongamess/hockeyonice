@@ -112,11 +112,8 @@ const programmes = [
     name: "Learn to Skate",
     target: "5,000 participants annually",
     desc: "A beginner programme introducing skating fundamentals — the essential first step toward ice hockey.",
-    images: {
-      col1a: "https://images.pexels.com/photos/6539437/pexels-photo-6539437.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=1",
-      col1b: "https://images.pexels.com/photos/10676419/pexels-photo-10676419.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=1",
-      col2:  "https://images.pexels.com/photos/6468586/pexels-photo-6468586.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=1",
-    },
+    images: { col1a: "/gallery/p1a.jpg", col1b: "/gallery/p1b.jpg", col2: "/gallery/p1c.jpg" },
+    imageLabels: { col1a: "Prog 1 — Image A", col1b: "Prog 1 — Image B", col2: "Prog 1 — Image C" },
   },
   {
     num: "02",
@@ -124,11 +121,8 @@ const programmes = [
     name: "Youth Development League",
     target: "20 teams every season",
     desc: "Structured leagues for junior players — building team skills, game intelligence, and competitive experience.",
-    images: {
-      col1a: "https://images.pexels.com/photos/12955702/pexels-photo-12955702.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=1",
-      col1b: "https://images.pexels.com/photos/6468719/pexels-photo-6468719.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=1",
-      col2:  "https://images.pexels.com/photos/1921325/pexels-photo-1921325.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=1",
-    },
+    images: { col1a: "/gallery/p2a.jpg", col1b: "/gallery/p2b.jpg", col2: "/gallery/p2c.jpg" },
+    imageLabels: { col1a: "Prog 2 — Image D", col1b: "Prog 2 — Image E", col2: "Prog 2 — Image F" },
   },
   {
     num: "03",
@@ -136,23 +130,20 @@ const programmes = [
     name: "Girls in Hockey",
     target: "40% female participation",
     desc: "Increasing female participation through dedicated programmes — ensuring equal opportunity on and off the ice.",
-    images: {
-      col1a: "https://images.pexels.com/photos/6539350/pexels-photo-6539350.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=1",
-      col1b: "https://images.pexels.com/photos/6539439/pexels-photo-6539439.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=1",
-      col2:  "https://images.pexels.com/photos/6468714/pexels-photo-6468714.jpeg?auto=compress&cs=tinysrgb&w=800&dpr=1",
-    },
+    images: { col1a: "/gallery/p3a.jpg", col1b: "/gallery/p3b.jpg", col2: "/gallery/p3c.jpg" },
+    imageLabels: { col1a: "Prog 3 — Image G", col1b: "Prog 3 — Image H", col2: "Prog 3 — Image I" },
   },
 ];
 
 const impactStats = [
-  ["50,000+", "Youth Reached"],
-  ["200+", "Development Camps"],
-  ["25+", "Cities"],
-  ["100+", "Schools"],
-  ["500+", "Players in Structured Programmes"],
-  ["300+", "Volunteers"],
-  ["100+", "Certified Coaches"],
-  ["10+", "International Collaborations"],
+  ["50,000+", "Young players on ice"],
+  ["200+", "Development camps"],
+  ["25+", "Cities covered"],
+  ["100+", "Partner schools"],
+  ["500+", "Competitive athletes"],
+  ["300+", "Trained volunteers"],
+  ["100+", "Certified coaches"],
+  ["10+", "International tie-ups"],
 ];
 
 const roadmap = [
@@ -172,34 +163,20 @@ const partnerOpportunities = [
   "International Exchange Programmes",
 ];
 
-// Hockey-themed marquee cards — all images from verified Pexels IDs
-const PX = (id) => `https://images.pexels.com/photos/${id}/pexels-photo-${id}.jpeg?auto=compress&cs=tinysrgb&w=500&dpr=1`;
-
-const marqueeRow1 = [
-  { type: "img", src: PX(1921325),   label: "Game Action" },
-  { type: "img", src: PX(10676419),  label: "Ice Skate Blade" },
-  { type: "img", src: PX(15343890),  label: "Elite Training" },
-  { type: "img", src: PX(6557335),   label: "Hockey Skates" },
-  { type: "img", src: PX(6539437),   label: "Learn to Skate" },
-  { type: "img", src: PX(6468714),   label: "Championship Goal" },
-  { type: "img", src: PX(6468586),   label: "On the Ice" },
-  { type: "quote", text: "Building India's Ice Hockey Legacy", sub: "HOIF · MISSION 2030", img: PX(6468586) },
-  { type: "img", src: PX(20025288),  label: "Competitive League" },
-  { type: "img", src: PX(6468719),   label: "Hockey Sticks" },
-  { type: "img", src: PX(12955702),  label: "Youth Development" },
-];
-
-const marqueeRow2 = [
-  { type: "img", src: PX(6539355),   label: "On the Rink" },
-  { type: "img", src: PX(8974839),   label: "Future Champions" },
-  { type: "quote", text: "Every child deserves to skate", sub: "HOIF GRASSROOTS INITIATIVE", img: PX(6539355) },
-  { type: "img", src: PX(1757186),   label: "Ice & Speed" },
-  { type: "img", src: PX(6539439),   label: "Girls in Hockey" },
-  { type: "img", src: PX(6539350),   label: "Lacing Up" },
-  { type: "img", src: PX(9630669),   label: "Hockey India" },
-  { type: "quote", text: "The rink is the classroom of champions", sub: "HOIF COACHING PHILOSOPHY", img: PX(1921325) },
-  { type: "img", src: PX(8975011),   label: "Skating Hard" },
-  { type: "img", src: PX(6468714),   label: "National Championship" },
+// Photo grid — 12 client-provided images, 3 rows × 4 columns
+const photoGrid = [
+  { src: "/gallery/g01.jpg", label: "Team India" },
+  { src: "/gallery/g02.jpg", label: "On the Rink" },
+  { src: "/gallery/g03.jpg", label: "IHAI Champions" },
+  { src: "/gallery/g04.jpg", label: "Game Action" },
+  { src: "/gallery/g05.jpg", label: "On the Ice" },
+  { src: "/gallery/g06.jpg", label: "International Meet" },
+  { src: "/gallery/g07.jpg", label: "Squad Goals" },
+  { src: "/gallery/g08.jpg", label: "Youth Programme" },
+  { src: "/gallery/g09.jpg", label: "Ice Session" },
+  { src: "/gallery/g10.jpg", label: "National Championship" },
+  { src: "/gallery/g11.jpg", label: "Faceoff" },
+  { src: "/gallery/g12.jpg", label: "Game Day" },
 ];
 
 // ─── REUSABLE COMPONENTS ─────────────────────────────────────────────────────
@@ -412,7 +389,29 @@ function HeroSection({ onJoin, onGame }) {
       {/* Navbar */}
       <FadeIn delay={0} y={-20} className="w-full" style={{ position: "relative", zIndex: 10 }}>
         <nav className="flex justify-between items-center px-6 md:px-10 pt-6 md:pt-8">
-          {["About", "Programmes", "Impact", "Contact"].map((link) => (
+          {/* Left links */}
+          {["About", "Programmes"].map((link) => (
+            <a
+              key={link}
+              href={`#${link.toLowerCase()}`}
+              className="text-sm md:text-lg lg:text-[1.4rem] font-medium uppercase tracking-wider transition-opacity duration-200 hover:opacity-70"
+              style={{ color: "#D7E2EA" }}
+            >
+              {link}
+            </a>
+          ))}
+
+          {/* Centre logo — full horizontal */}
+          <a href="#" className="flex items-center mx-4" style={{ flexShrink: 0 }}>
+            <img
+              src="/logo-full.png"
+              alt="Hockey On Ice Foundation"
+              style={{ height: "clamp(36px, 4.5vw, 52px)", width: "auto", objectFit: "contain", mixBlendMode: "lighten" }}
+            />
+          </a>
+
+          {/* Right links */}
+          {["Impact", "Contact"].map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
@@ -499,7 +498,14 @@ function HeroSection({ onJoin, onGame }) {
           </p>
         </FadeIn>
         <FadeIn delay={0.5} y={20}>
-          <ContactButton label="Join the Movement" onClick={onJoin} />
+          <div className="flex flex-col items-center gap-3">
+            <img
+              src="/logo-symbol.png"
+              alt="HOIF"
+              style={{ height: 52, width: "auto", objectFit: "contain", mixBlendMode: "lighten", opacity: 0.92 }}
+            />
+            <ContactButton label="Join the Movement" onClick={onJoin} />
+          </div>
         </FadeIn>
       </div>
 
@@ -509,69 +515,27 @@ function HeroSection({ onJoin, onGame }) {
 
 // ─── MARQUEE SECTION ─────────────────────────────────────────────────────────
 
-function MarqueeCard({ card }) {
-  if (card.type === "img") {
-    return (
-      <div className="relative flex-shrink-0 rounded-2xl overflow-hidden" style={{ width: 420, height: 270 }}>
-        <img src={card.src} alt="" loading="lazy" className="w-full h-full object-cover"/>
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.72) 0%, transparent 55%)" }}/>
-        <div className="absolute top-4 left-4 flex items-center gap-2">
-          <span className="w-2 h-2 rounded-full" style={{ background: "#0066FF" }}/>
-          <span className="text-[10px] font-medium uppercase tracking-widest" style={{ color: "rgba(215,226,234,0.7)" }}>HOIF</span>
-        </div>
-        <span className="absolute bottom-4 left-5 text-xs font-medium uppercase tracking-widest" style={{ color: "rgba(215,226,234,0.9)" }}>
-          {card.label}
-        </span>
-      </div>
-    );
-  }
-  if (card.type === "stat") {
-    return (
-      <div
-        className="relative flex-shrink-0 rounded-2xl overflow-hidden flex flex-col justify-between p-7"
-        style={{
-          width: 420, height: 270,
-          background: "linear-gradient(135deg, #000B2E 0%, #001840 60%, #000520 100%)",
-          border: "1px solid rgba(0,87,255,0.22)",
-        }}
-      >
-        <RinkCircleDecor style={{ position: "absolute", right: -90, top: -90, width: 300, opacity: 0.55, pointerEvents: "none" }}/>
-        <div className="relative z-10">
-          <div className="text-[10px] font-semibold uppercase tracking-widest mb-3" style={{ color: card.accent || "#0066FF" }}>
-            HOIF · IMPACT
+function PhotoCard({ photo }) {
+  return (
+    <div className="relative rounded-2xl overflow-hidden" style={{ aspectRatio: "4/3", background: "linear-gradient(135deg, #0a0f1e 0%, #0d1a2e 100%)", border: photo.src ? "none" : "1.5px dashed rgba(0,87,255,0.25)" }}>
+      {photo.src ? (
+        <>
+          <img src={photo.src} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
+          <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,0,0,0.65) 0%, transparent 55%)" }}/>
+          <div className="absolute top-3 left-3 flex items-center gap-1.5">
+            <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#0066FF" }}/>
+            <span className="text-[9px] font-medium uppercase tracking-widest" style={{ color: "rgba(215,226,234,0.7)" }}>HOIF</span>
           </div>
-          <div className="font-black leading-none" style={{ fontSize: "clamp(2.8rem, 6vw, 5rem)", color: "#FFFFFF" }}>
-            {card.value}
-          </div>
+          <span className="absolute bottom-3 left-4 text-[10px] font-medium uppercase tracking-widest" style={{ color: "rgba(215,226,234,0.85)" }}>{photo.label}</span>
+        </>
+      ) : (
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2">
+          <svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect x="1" y="1" width="34" height="34" rx="7" stroke="rgba(0,87,255,0.4)" strokeWidth="1.5" strokeDasharray="4 3"/><path d="M11 25l5-6 4 5 3-3 5 4" stroke="rgba(0,87,255,0.5)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="13.5" cy="14.5" r="2.5" stroke="rgba(0,87,255,0.5)" strokeWidth="1.5"/></svg>
+          <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "rgba(0,130,255,0.55)" }}>{photo.label}</span>
         </div>
-        <div className="relative z-10">
-          <div className="font-medium uppercase tracking-wide text-sm mb-2" style={{ color: "rgba(215,226,234,0.6)" }}>
-            {card.label}
-          </div>
-          <div className="w-10 h-0.5" style={{ background: card.accent || "#0066FF" }}/>
-        </div>
-      </div>
-    );
-  }
-  if (card.type === "quote") {
-    return (
-      <div className="relative flex-shrink-0 rounded-2xl overflow-hidden flex flex-col justify-end px-8 py-7" style={{ width: 420, height: 270 }}>
-        {/* Background image */}
-        <img src={card.img} alt="" loading="lazy" className="absolute inset-0 w-full h-full object-cover"/>
-        {/* Dark overlay — heavier so text pops */}
-        <div className="absolute inset-0" style={{ background: "linear-gradient(to top, rgba(0,4,20,0.92) 0%, rgba(0,4,20,0.55) 55%, rgba(0,0,0,0.2) 100%)" }}/>
-        {/* Text */}
-        <div className="relative z-10 w-8 h-0.5 mb-4" style={{ background: "#0066FF" }}/>
-        <p className="relative z-10 font-black uppercase leading-tight mb-3" style={{ color: "#FFFFFF", fontSize: "clamp(1.1rem, 2.2vw, 1.5rem)" }}>
-          &ldquo;{card.text}&rdquo;
-        </p>
-        <span className="relative z-10 text-[10px] uppercase tracking-widest font-semibold" style={{ color: "#3399FF" }}>
-          {card.sub}
-        </span>
-      </div>
-    );
-  }
-  return null;
+      )}
+    </div>
+  );
 }
 
 function MarqueeSection() {
@@ -583,7 +547,7 @@ function MarqueeSection() {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const sectionTop = window.scrollY + rect.top;
-      const raw = (window.scrollY - sectionTop + window.innerHeight) * 0.3;
+      const raw = (window.scrollY - sectionTop + window.innerHeight) * 0.22;
       setOffset(raw);
     };
     window.addEventListener("scroll", onScroll, { passive: true });
@@ -591,17 +555,34 @@ function MarqueeSection() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const tripled1 = [...marqueeRow1, ...marqueeRow1, ...marqueeRow1];
-  const tripled2 = [...marqueeRow2, ...marqueeRow2, ...marqueeRow2];
+  // 3 rows of 4 — directions: left, right, left
+  const rows = [photoGrid.slice(0, 4), photoGrid.slice(4, 8), photoGrid.slice(8, 12)];
+  const dirs = [-1, 1, -1];
 
   return (
     <section ref={sectionRef} className="pt-24 sm:pt-32 md:pt-40 pb-10 overflow-hidden" style={{ background: "#0C0C0C" }}>
-      <div className="flex gap-3 mb-3" style={{ transform: `translateX(${offset - 200}px)`, willChange: "transform" }}>
-        {tripled1.map((card, i) => <MarqueeCard key={i} card={card}/>)}
-      </div>
-      <div className="flex gap-3" style={{ transform: `translateX(${-(offset - 200)}px)`, willChange: "transform" }}>
-        {tripled2.map((card, i) => <MarqueeCard key={i} card={card}/>)}
-      </div>
+      {rows.map((row, ri) => (
+        <div
+          key={ri}
+          className={ri < 2 ? "mb-3" : ""}
+          style={{
+            display: "flex",
+            gap: 12,
+            // row is wider than viewport so cards exist off-screen on both sides
+            width: "calc(100% + 320px)",
+            marginLeft: -160,
+            transform: `translateX(${dirs[ri] * (offset - 160)}px)`,
+            willChange: "transform",
+          }}
+        >
+          {/* duplicate last card at start and first card at end so edges always fill */}
+          {[row[row.length - 1], ...row, row[0]].map((photo, i) => (
+            <div key={i} style={{ flex: "0 0 calc(20% - 10px)", minWidth: 0 }}>
+              <PhotoCard photo={photo}/>
+            </div>
+          ))}
+        </div>
+      ))}
     </section>
   );
 }
@@ -731,6 +712,16 @@ function ServicesSection() {
 
 // ─── PROGRAMMES SECTION (STICKY CARDS) ───────────────────────────────────────
 
+function ProgImgSlot({ src, label, style = {} }) {
+  if (src) return <img src={src} alt="" loading="lazy" className="w-full object-cover" style={style}/>;
+  return (
+    <div className="w-full flex flex-col items-center justify-center gap-2" style={{ background: "rgba(255,255,255,0.04)", border: "1.5px dashed rgba(0,87,255,0.22)", ...style }}>
+      <svg width="32" height="32" viewBox="0 0 36 36" fill="none"><rect x="1" y="1" width="34" height="34" rx="7" stroke="rgba(0,87,255,0.35)" strokeWidth="1.5" strokeDasharray="4 3"/><path d="M11 25l5-6 4 5 3-3 5 4" stroke="rgba(0,87,255,0.45)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/><circle cx="13.5" cy="14.5" r="2.5" stroke="rgba(0,87,255,0.45)" strokeWidth="1.5"/></svg>
+      <span style={{ fontSize: "0.65rem", fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.1em", color: "rgba(0,130,255,0.5)" }}>{label}</span>
+    </div>
+  );
+}
+
 function ProgrammeCard({ programme, index, totalCards, scrollYProgress }) {
   const start = index / totalCards;
   const end = (index + 1) / totalCards;
@@ -776,11 +767,11 @@ function ProgrammeCard({ programme, index, totalCards, scrollYProgress }) {
 
           <div className="flex gap-3 sm:gap-4" style={{ height: "clamp(300px, 45vh, 580px)" }}>
             <div className="flex flex-col gap-3 sm:gap-4" style={{ width: "40%" }}>
-              <img src={programme.images.col1a} alt="" loading="lazy" className="w-full object-cover" style={{ height: "clamp(130px, 16vw, 230px)", borderRadius }}/>
-              <img src={programme.images.col1b} alt="" loading="lazy" className="w-full object-cover flex-1" style={{ borderRadius }}/>
+              <ProgImgSlot src={programme.images.col1a} label={programme.imageLabels.col1a} style={{ height: "clamp(130px, 16vw, 230px)", borderRadius }}/>
+              <ProgImgSlot src={programme.images.col1b} label={programme.imageLabels.col1b} style={{ flex: 1, borderRadius }}/>
             </div>
             <div style={{ width: "60%" }}>
-              <img src={programme.images.col2} alt="" loading="lazy" className="w-full h-full object-cover" style={{ borderRadius }}/>
+              <ProgImgSlot src={programme.images.col2} label={programme.imageLabels.col2} style={{ width: "100%", height: "100%", borderRadius }}/>
             </div>
           </div>
         </div>
@@ -859,9 +850,18 @@ function ImpactSection() {
       }}/>
 
       <FadeIn delay={0} y={40}>
-        <h2 className="font-black uppercase text-center mb-16 sm:mb-20 md:mb-28 relative z-10" style={{ color: "#0C0C0C", fontSize: "clamp(3rem, 12vw, 160px)" }}>
-          Our Impact
-        </h2>
+        <div className="text-center mb-16 sm:mb-20 md:mb-24 relative z-10">
+          <div className="inline-flex items-center gap-2 mb-5 px-4 py-1.5 rounded-full" style={{ background: "rgba(0,87,255,0.1)", border: "1px solid rgba(0,87,255,0.25)" }}>
+            <div className="w-1.5 h-1.5 rounded-full" style={{ background: "#0057FF" }}/>
+            <span className="text-xs font-semibold uppercase tracking-widest" style={{ color: "#0057FF" }}>5-Year Mission Target</span>
+          </div>
+          <h2 className="font-black uppercase leading-none" style={{ color: "#0C0C0C", fontSize: "clamp(3rem, 12vw, 160px)" }}>
+            Our Goal
+          </h2>
+          <p className="font-light mt-4 mx-auto max-w-xl" style={{ color: "rgba(12,12,12,0.55)", fontSize: "clamp(0.9rem, 1.6vw, 1.15rem)", lineHeight: 1.65 }}>
+            By 2030, we are committed to building India's most extensive grassroots ice hockey ecosystem — here's what we're working toward.
+          </p>
+        </div>
       </FadeIn>
 
       <div className="max-w-5xl mx-auto grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6 relative z-10">
@@ -870,11 +870,12 @@ function ImpactSection() {
             <div
               className="flex flex-col gap-2 p-4 sm:p-5 rounded-2xl"
               style={{
-                border: "1.5px solid rgba(0,87,255,0.18)",
-                background: "rgba(255,255,255,0.8)",
+                border: "1.5px solid rgba(0,87,255,0.15)",
+                background: "rgba(255,255,255,0.85)",
                 backdropFilter: "blur(4px)",
               }}
             >
+              <span className="text-[10px] font-semibold uppercase tracking-widest" style={{ color: "#0057FF" }}>Target</span>
               <strong
                 className="font-black leading-none"
                 style={{
@@ -1060,17 +1061,30 @@ function Footer() {
       className="px-6 md:px-10 py-12 rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 z-40 relative"
       style={{ background: "#0C0C0C" }}
     >
-      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-start gap-8">
-        <div>
-          <p className="font-black uppercase tracking-tight leading-none mb-3" style={{ color: "#D7E2EA", fontSize: "clamp(1.2rem, 3vw, 2rem)" }}>
-            Hockey On Ice Foundation
-          </p>
-          <p className="font-light max-w-sm" style={{ color: "rgba(215,226,234,0.5)", fontSize: "clamp(0.8rem, 1.4vw, 1rem)" }}>
-            Building India&apos;s largest grassroots ice hockey ecosystem through access, coaching, and collaboration.
-          </p>
+      <div className="max-w-5xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-8">
+        {/* Left: symbol + name + tagline */}
+        <div className="flex items-center gap-4">
+          <img
+            src="/logo-symbol.png"
+            alt="HOIF Symbol"
+            style={{ width: 64, height: 64, objectFit: "contain", flexShrink: 0 }}
+          />
+          <div>
+            <p className="font-black uppercase tracking-tight leading-none mb-2" style={{ color: "#D7E2EA", fontSize: "clamp(1.2rem, 3vw, 2rem)" }}>
+              Hockey On Ice Foundation
+            </p>
+            <p className="font-light max-w-sm" style={{ color: "rgba(215,226,234,0.5)", fontSize: "clamp(0.8rem, 1.4vw, 1rem)" }}>
+              Building India&apos;s largest grassroots ice hockey ecosystem through access, coaching, and collaboration.
+            </p>
+          </div>
         </div>
-        <div className="flex flex-col gap-2 text-right">
-          <span className="font-medium uppercase tracking-widest" style={{ color: "rgba(215,226,234,0.35)", fontSize: "0.75rem" }}>Target 2030</span>
+        {/* Right: full logo + copyright */}
+        <div className="flex flex-col items-end gap-3">
+          <img
+            src="/logo-full.png"
+            alt="Hockey On Ice Foundation"
+            style={{ height: 56, objectFit: "contain", mixBlendMode: "lighten" }}
+          />
           <span className="font-medium uppercase tracking-widest" style={{ color: "rgba(215,226,234,0.35)", fontSize: "0.75rem" }}>© 2026 HOIF</span>
         </div>
       </div>
