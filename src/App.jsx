@@ -404,8 +404,7 @@ function HeroSection({ onJoin, onGame }) {
           {/* Centre logo — notch tab joined to top edge */}
           <a href="#" style={{ flexShrink: 0, position: "relative", top: "-24px", display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
             <div style={{
-              background: "rgba(255,255,255,0.96)",
-              backdropFilter: "blur(12px)",
+              background: "#ffffff",
               borderRadius: "0 0 20px 20px",
               padding: "0 18px 10px",
               boxShadow: "0 6px 32px rgba(0,0,0,0.28)",
