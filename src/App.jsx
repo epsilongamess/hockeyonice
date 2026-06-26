@@ -406,7 +406,7 @@ function HeroSection({ onJoin, onGame }) {
             <img
               src="/logo-full.png"
               alt="Hockey On Ice Foundation"
-              style={{ height: "clamp(36px, 4.5vw, 52px)", width: "auto", objectFit: "contain", mixBlendMode: "lighten" }}
+              style={{ height: "clamp(36px, 4.5vw, 52px)", width: "auto", objectFit: "contain" }}
             />
           </a>
 
@@ -502,7 +502,7 @@ function HeroSection({ onJoin, onGame }) {
             <img
               src="/logo-symbol.png"
               alt="HOIF"
-              style={{ height: 52, width: "auto", objectFit: "contain", mixBlendMode: "lighten", opacity: 0.92 }}
+              style={{ height: 52, width: "auto", objectFit: "contain" }}
             />
             <ContactButton label="Join the Movement" onClick={onJoin} />
           </div>
@@ -1083,7 +1083,7 @@ function Footer() {
           <img
             src="/logo-full.png"
             alt="Hockey On Ice Foundation"
-            style={{ height: 56, objectFit: "contain", mixBlendMode: "lighten" }}
+            style={{ height: 56, objectFit: "contain" }}
           />
           <span className="font-medium uppercase tracking-widest" style={{ color: "rgba(215,226,234,0.35)", fontSize: "0.75rem" }}>© 2026 HOIF</span>
         </div>

@@ -757,7 +757,7 @@ function Level7({ playerName, onJoin }) {
       <canvas ref={canvasRef} style={{ position:"fixed", inset:0, width:"100%", height:"100%", pointerEvents:"none", zIndex:1 }}/>
       <motion.div initial={{ scale:0, rotate:-20 }} animate={{ scale:1, rotate:0 }} transition={{ type:"spring", stiffness:180, delay:0.1 }}
         style={{ position:"relative", zIndex:2 }}>
-        <img src="/gear/trophy.jpg" alt="Trophy" style={{ width:110, height:110, objectFit:"contain" }}/>
+        <img src="/gear/trophy.png" alt="Trophy" style={{ width:110, height:110, objectFit:"contain" }}/>
       </motion.div>
       <motion.div initial={{ y:22, opacity:0 }} animate={{ y:0, opacity:1 }} transition={{ delay:0.32 }}
         style={{ textAlign:"center", position:"relative", zIndex:2 }}>
